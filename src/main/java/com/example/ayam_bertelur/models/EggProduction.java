@@ -1,13 +1,13 @@
 package com.example.ayam_bertelur.models;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,19 +17,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(name = "egg-production")
+@Entity
 public class EggProduction {
     @Id
-    @Column(name="egg_production_id")
+    @Column(name = "egg_production_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long eggProductionId;
 
-    @Column(name="egg_laids")
-    private int eggLaids;
+    @Column(name = "egg_laids")
+    private int eggsLaid;
 
-    @Column(name="date")
-    private LocalDate date;
+    @Column(name = "price")
+    private double price;
 
-    @ManyToOne
-    @JoinColumn(name = "chicken_id")
-    private Chicken chicken;
+    @Column(name = "date")
+    private LocalDateTime date;
 }
